@@ -1,12 +1,19 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import { riskDistribution, timeline } from "@/lib/mock-data/core";
 
 const colors = ["#ef4444", "#f59e0b", "#22c55e"];
 
 export function RiskDistributionChart() {
-  if (typeof window === "undefined") {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
     return (
       <div className="kona-card p-4 h-[280px]">
         <p className="mb-3 font-semibold">Risk Distribution</p>
@@ -35,7 +42,13 @@ export function RiskDistributionChart() {
 }
 
 export function RiskTrendChart() {
-  if (typeof window === "undefined") {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
     return (
       <div className="kona-card p-4 h-[280px]">
         <p className="mb-3 font-semibold">Real-Time Risk Monitor</p>
